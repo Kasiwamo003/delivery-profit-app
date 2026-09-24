@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#0b0d10" />
+  <title>配達利益アプリ</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">DELIVERY DASHBOARD</div>
+      <h1>配達利益アプリ</h1>
+    </div>
+    <button id="themeBtn" class="ghost">表示切替</button>
+  </header>
+
+  <main class="wrap">
+    <section class="hero-grid">
+      <div class="card hero">
+        <div class="label">今日の利益</div>
+        <div class="big" id="todayProfit">¥0</div>
+        <div class="sub">経費・クエスト込み</div>
+      </div>
+      <div class="card">
+        <div class="label">実質時給</div>
+        <div class="metric" id="hourlyWithQuest">¥0/h</div>
+        <div class="sub">クエスト込み</div>
+      </div>
+      <div class="card">
+        <div class="label">クエストなし時給</div>
+        <div class="metric" id="hourlyNoQuest">¥0/h</div>
+      </div>
+      <div class="card">
+        <div class="label">クエスト効果</div>
+        <div class="metric positive" id="questBoost">+¥0/h</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>今日の記録</h2>
+        <span class="pill" id="targetGap">目標との差 ¥0/h</span>
+      </div>
+
+      <div class="form-grid">
+        <label>サービス
+          <select id="platform">
+            <option>Uber Eats</option>
+            <option>出前館</option>
+            <option>Wolt</option>
+            <option>Rocket Now</option>
+            <option>menu</option>
+            <option>その他</option>
+          </select>
+        </label>
+
+        <label>通常報酬
+          <input id="sales" type="number" inputmode="numeric" placeholder="例 12000">
+        </label>
+
+        <label>稼働時間
+          <input id="hours" type="number" step="0.1" inputmode="decimal" placeholder="例 6.5">
+        </label>
+
+        <label>配達件数
+          <input id="deliveries" type="number" inputmode="numeric" placeholder="例 22">
+        </label>
+
+        <label>走行距離 km
+          <input id="distance" type="number" step="0.1" inputmode="decimal" placeholder="例 38">
+        </label>
+
+        <label>経費
+          <input id="expenses" type="number" inputmode="numeric" placeholder="例 900">
+        </label>
+      </div>
+
+      <div class="quest-box">
+        <div class="section-title">
+          <h3>クエスト・ボーナス</h3>
+          <span class="muted">通常報酬とは分けて入力</span>
+        </div>
+        <div class="form-grid">
+          <label>跨ぎクエスト
+            <input id="streakQuest" type="number" inputmode="numeric" placeholder="0">
+          </label>
+          <label>ピーククエスト
+            <input id="peakQuest" type="number" inputmode="numeric" placeholder="0">
+          </label>
+          <label>その他ボーナス
+            <input id="otherQuest" type="number" inputmode="numeric" placeholder="0">
+          </label>
+          <label>跨ぎ目標件数
+            <input id="questTarget" type="number" inputmode="numeric" placeholder="例 70">
+          </label>
+          <label>現在件数
+            <input id="questCurrent" type="number" inputmode="numeric" placeholder="例 48">
+          </label>
+        </div>
+        <div class="progress-wrap">
+          <div class="progress-label"><span>クエスト進捗</span><strong id="questProgressText">0%</strong></div>
+          <div class="progress"><div id="questProgressBar"></div></div>
+          <div class="muted" id="questRemaining">残り 0件</div>
+        </div>
+      </div>
+
+      <div class="form-grid compact">
+        <label>目標時給
+          <input id="targetHourly" type="number" value="2000" inputmode="numeric">
+        </label>
+        <label>月収目標
+          <input id="monthlyTarget" type="number" value="500000" inputmode="numeric">
+        </label>
+      </div>
+
+      <button id="saveBtn" class="primary">今日の記録を保存</button>
+    </section>
+
+    <section class="card">
+      <h2>今日の効率</h2>
+      <div class="stats-grid">
+        <div><span>1件あたり売上</span><strong id="perDelivery">¥0</strong></div>
+        <div><span>1kmあたり利益</span><strong id="perKm">¥0</strong></div>
+        <div><span>クエスト合計</span><strong id="questTotal">¥0</strong></div>
+        <div><span>総売上</span><strong id="grossSales">¥0</strong></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>今月</h2>
+        <button id="exportBtn" class="ghost">CSV出力</button>
+      </div>
+      <div class="stats-grid">
+        <div><span>売上</span><strong id="monthSales">¥0</strong></div>
+        <div><span>利益</span><strong id="monthProfit">¥0</strong></div>
+        <div><span>平均時給</span><strong id="monthHourly">¥0/h</strong></div>
+        <div><span>月収予測</span><strong id="monthForecast">¥0</strong></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="section-title">
+        <h2>履歴</h2>
+        <button id="clearBtn" class="danger ghost">全削除</button>
+      </div>
+      <div id="history" class="history"></div>
+    </section>
+  </main>
+
+  <nav class="bottom-nav">
+    <button data-scroll="top">ホーム</button>
+    <button data-scroll="record">記録</button>
+    <button data-scroll="history">履歴</button>
+  </nav>
+
+  <script src="app.js"></script>
+</body>
+</html>
