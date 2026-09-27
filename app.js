@@ -65,6 +65,8 @@ function saveToday(){
     date: todayKey(),
     platform: $("platform").value,
     ...c,
+    area: $("area").value,
+timeSlot: $("timeSlot").value,
     questTarget: val("questTarget"),
     questCurrent: val("questCurrent"),
   };
