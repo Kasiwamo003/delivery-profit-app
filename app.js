@@ -166,3 +166,57 @@ renderHistory();
 renderMonth();
 
 window.deleteRecord = deleteRecord;
+function renderBreakdown() {
+  const records = getRecords();
+
+  function makeStats(key, boxId) {
+    const box = $(boxId);
+    if (!box) return;
+
+    const groups = {};
+
+    records.forEach(r => {
+      const name = r[key] || "未設定";
+
+      if (!groups[name]) {
+        groups[name] = {
+          sales: 0,
+          profit: 0,
+          hours: 0,
+          deliveries: 0
+        };
+      }
+
+      groups[name].sales += Number(r.gross || 0);
+      groups[name].profit += Number(r.profit || 0);
+      groups[name].hours += Number(r.hours || 0);
+      groups[name].deliveries += Number(r.deliveries || 0);
+    });
+
+    if (!records.length) {
+      box.innerHTML = '<p class="muted">まだ配達データがありません</p>';
+      return;
+    }
+
+    box.innerHTML = Object.entries(groups).map(([name, s]) => {
+      const hourly = s.hours > 0 ? s.profit / s.hours : 0;
+
+      return `
+        <div class="history-item">
+          <div class="history-main">
+            <strong>${name}</strong>
+            <div class="history-meta">
+              利益 ${yen(s.profit)} ・ 時給 ${yen(hourly)} ・ ${s.deliveries}件
+            </div>
+          </div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  makeStats("area", "areaStats");
+  makeStats("timeSlot", "timeStats");
+}
+
+renderBreakdown();
+
