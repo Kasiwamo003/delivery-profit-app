@@ -268,3 +268,4 @@ function applyProStatus(isPro) {
   document.body.classList.toggle("is-pro", isPro === true);
 }
 checkProStatus();
+$("loginBtn").addEventListener("click", sendLoginLink);
