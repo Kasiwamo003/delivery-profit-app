@@ -2,6 +2,22 @@ const supabaseClient = window.supabase.createClient(
   window.APP_CONFIG.SUPABASE_URL,
   window.APP_CONFIG.SUPABASE_PUBLISHABLE_KEY
 );
+async function checkProStatus() {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (!user) {
+    applyProStatus(false);
+    return;
+  }
+
+  const { data } = await supabaseClient
+    .from("profiles")
+    .select("is_pro")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  applyProStatus(data?.is_pro === true);
+}
 const $ = (id) => document.getElementById(id);
 const STORAGE_KEY = "delivery-profit-records-v1";
 const SETTINGS_KEY = "delivery-profit-settings-v1";
@@ -227,3 +243,4 @@ renderBreakdown();
 function applyProStatus(isPro) {
   document.body.classList.toggle("is-pro", isPro === true);
 }
+checkProStatus();
