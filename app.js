@@ -75,6 +75,7 @@ timeSlot: $("timeSlot").value,
   setRecords(records);
   renderHistory();
   renderMonth();
+  renderBreakdown();
   alert("保存しました");
 }
 
