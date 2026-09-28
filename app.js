@@ -220,4 +220,6 @@ function renderBreakdown() {
 }
 
 renderBreakdown();
-
+function applyProStatus(isPro) {
+  document.body.classList.toggle("is-pro", isPro === true);
+}
