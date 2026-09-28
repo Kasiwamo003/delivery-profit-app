@@ -36,7 +36,7 @@ async function sendLoginLink() {
   });
 
   if (error) {
-    $("authStatus").textContent = "送信できませんでした";
+    $("authStatus").textContent = error.message;
     return;
   }
 
