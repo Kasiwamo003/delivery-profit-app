@@ -1,3 +1,7 @@
+const supabaseClient = window.supabase.createClient(
+  window.APP_CONFIG.SUPABASE_URL,
+  window.APP_CONFIG.SUPABASE_PUBLISHABLE_KEY
+);
 const $ = (id) => document.getElementById(id);
 const STORAGE_KEY = "delivery-profit-records-v1";
 const SETTINGS_KEY = "delivery-profit-settings-v1";
