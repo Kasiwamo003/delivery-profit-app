@@ -5,10 +5,21 @@ const supabaseClient = window.supabase.createClient(
 async function checkProStatus() {
   const { data: { user } } = await supabaseClient.auth.getUser();
 
-  if (!user) {
-    applyProStatus(false);
-    return;
-  }
+const authBox = $("authBox");
+const logoutBtn = $("logoutBtn");
+const authStatus = $("authStatus");
+
+if (!user) {
+  if (authBox) authBox.style.display = "";
+  if (logoutBtn) logoutBtn.style.display = "none";
+  if (authStatus) authStatus.textContent = "";
+
+  applyProStatus(false);
+  return;
+}
+
+if (authBox) authBox.style.display = "none";
+if (logoutBtn) logoutBtn.style.display = "";
 
   const { data } = await supabaseClient
     .from("profiles")
@@ -282,4 +293,8 @@ checkProStatus();
 $("loginBtn").addEventListener("click", sendLoginLink);
 supabaseClient.auth.onAuthStateChange(() => {
   checkProStatus();
+});
+$("logoutBtn").addEventListener("click", async () => {
+  await supabaseClient.auth.signOut();
+  await checkProStatus();
 });
