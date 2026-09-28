@@ -271,6 +271,11 @@ function applyProStatus(isPro) {
   if (upgrade) {
     upgrade.style.display = isPro ? "none" : "";
   }
+
+  const active = $("proActive");
+  if (active) {
+    active.style.display = isPro ? "" : "none";
+  }
 }
   
 checkProStatus();
