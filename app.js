@@ -18,6 +18,30 @@ async function checkProStatus() {
 
   applyProStatus(data?.is_pro === true);
 }
+async function sendLoginLink() {
+  const email = $("loginEmail").value.trim();
+
+  if (!email) {
+    $("authStatus").textContent = "メールアドレスを入力してください";
+    return;
+  }
+
+  $("authStatus").textContent = "送信中...";
+
+  const { error } = await supabaseClient.auth.signInWithOtp({
+    email,
+    options: {
+      emailRedirectTo: "https://kasiwamo003.github.io/delivery-profit-app/"
+    }
+  });
+
+  if (error) {
+    $("authStatus").textContent = "送信できませんでした";
+    return;
+  }
+
+  $("authStatus").textContent = "ログイン用メールを送りました";
+}
 const $ = (id) => document.getElementById(id);
 const STORAGE_KEY = "delivery-profit-records-v1";
 const SETTINGS_KEY = "delivery-profit-settings-v1";
