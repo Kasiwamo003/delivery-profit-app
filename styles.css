@@ -31,3 +31,5 @@ input:focus,select:focus{border-color:var(--accent)}
 .bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:30;display:flex;justify-content:space-around;padding:10px 10px calc(10px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--card) 94%,transparent);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
 .bottom-nav button{border:0;background:none;color:var(--text);font-size:12px}
 @media(max-width:520px){.form-grid{grid-template-columns:1fr}.hero-grid{grid-template-columns:1fr 1fr}.big{font-size:38px}}
+.pro-only{display:none}
+body.is-pro .pro-only{display:block}
