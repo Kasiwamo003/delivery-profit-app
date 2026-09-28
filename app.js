@@ -266,7 +266,13 @@ function renderBreakdown() {
 renderBreakdown();
 function applyProStatus(isPro) {
   document.body.classList.toggle("is-pro", isPro === true);
+
+  const upgrade = $("proUpgrade");
+  if (upgrade) {
+    upgrade.style.display = isPro ? "none" : "";
+  }
 }
+  
 checkProStatus();
 $("loginBtn").addEventListener("click", sendLoginLink);
 supabaseClient.auth.onAuthStateChange(() => {
