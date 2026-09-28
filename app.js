@@ -269,3 +269,6 @@ function applyProStatus(isPro) {
 }
 checkProStatus();
 $("loginBtn").addEventListener("click", sendLoginLink);
+supabaseClient.auth.onAuthStateChange(() => {
+  checkProStatus();
+});
