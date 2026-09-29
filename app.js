@@ -477,23 +477,29 @@ function renderSelectedDateSummary(date) {
   $("questBoost").textContent = "+" + yen(Math.max(0, questBoost)) + "/h";
 }
 const dashboardDateInput = $("dashboardDateInput");
+const dateLabel = $("dashboardDate");
 
-if (dashboardDateInput && dashboardDate) {
-  const today = new Date();
+function updateDashboardDate(dateValue) {
+  if (!dateLabel || !dateValue) return;
+
+  const selected = new Date(dateValue + "T00:00:00");
+
+  dateLabel.textContent = selected.toLocaleDateString("ja-JP", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "short"
+  });
+
+  renderSelectedDateSummary(dateValue);
+}
+
+if (dashboardDateInput) {
   dashboardDateInput.value = todayKey();
 
+  updateDashboardDate(dashboardDateInput.value);
+
   dashboardDateInput.addEventListener("change", () => {
-    const selected = new Date(dashboardDateInput.value + "T00:00:00");
-
-    dashboardDate.textContent = selected.toLocaleDateString("ja-JP", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      weekday: "short"
-      
-    });
-  
-
-renderSelectedDateSummary(dashboardDateInput.value);
-});
+    updateDashboardDate(dashboardDateInput.value);
+  });
 }
