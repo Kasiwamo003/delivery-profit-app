@@ -109,7 +109,24 @@ function refreshLive(){
   $("questProgressBar").style.width = p + "%";
   $("questProgressText").textContent = Math.round(p) + "%";
   $("questRemaining").textContent = "残り " + Math.max(0, targetQ-currentQ) + "件";
+const remainingQ = Math.max(0, targetQ - currentQ);
+const deliveryPace = c.hours > 0 ? c.deliveries / c.hours : 0;
+const etaQ = deliveryPace > 0 ? remainingQ / deliveryPace : 0;
 
+const proRemaining = $("questRemainingPro");
+if (proRemaining) {
+  proRemaining.textContent = remainingQ + "件";
+}
+
+const proEta = $("questEtaPro");
+if (proEta) {
+  proEta.textContent =
+    remainingQ === 0
+      ? "達成"
+      : deliveryPace > 0
+        ? etaQ.toFixed(1) + "時間"
+        : "計算不可";
+}
   setSettings({targetHourly: val("targetHourly"), monthlyTarget: val("monthlyTarget")});
 }
 
