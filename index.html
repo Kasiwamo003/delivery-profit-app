@@ -369,13 +369,44 @@
   </main>
 
   <nav class="bottom-nav">
-  <button data-scroll="top">ホーム</button>
-  <button data-scroll="record">記録</button>
-  <button data-scroll="analysis">分析</button>
-  <button data-scroll="history">履歴</button>
-  <button data-scroll="proUpgrade">Pro</button>
+  <button data-scroll="top" class="nav-item active">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M3 10.5 12 3l9 7.5v9a1.5 1.5 0 0 1-1.5 1.5H15v-6H9v6H4.5A1.5 1.5 0 0 1 3 19.5z"/>
+    </svg>
+    <span>ホーム</span>
+  </button>
+
+  <button data-scroll="record" class="nav-item">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="9"/>
+      <path d="M12 8v8M8 12h8"/>
+    </svg>
+    <span>記録</span>
+  </button>
+
+  <button data-scroll="analysis" class="nav-item">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 3v9h9A9 9 0 1 1 12 3z"/>
+      <path d="M15 3.6A9 9 0 0 1 20.4 9H15z"/>
+    </svg>
+    <span>分析</span>
+  </button>
+
+  <button data-scroll="history" class="nav-item">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="5" y="3" width="14" height="18" rx="2"/>
+      <path d="M8 8h8M8 12h8M8 16h5"/>
+    </svg>
+    <span>履歴</span>
+  </button>
+
+  <button data-scroll="proUpgrade" class="nav-item">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m4 7 4 4 4-7 4 7 4-4-2 12H6z"/>
+    </svg>
+    <span>Pro</span>
+  </button>
 </nav>
-  </nav>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="config.js"></script>
   <script src="app.js?v=18"></script>
