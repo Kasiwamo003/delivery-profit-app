@@ -194,6 +194,25 @@ function renderMonth(){
   const daysInMonth = new Date(now.getFullYear(), now.getMonth()+1, 0).getDate();
   const forecast = day > 0 ? profit/day*daysInMonth : 0;
   $("monthForecast").textContent = yen(forecast);
+  const monthlyTarget = val("monthlyTarget");
+const targetRemaining = Math.max(0, monthlyTarget - profit);
+const targetHours =
+  avgHourly > 0 ? targetRemaining / avgHourly : 0;
+
+const targetRemainingEl = $("targetRemainingPro");
+if (targetRemainingEl) {
+  targetRemainingEl.textContent = yen(targetRemaining);
+}
+
+const targetHoursEl = $("targetHoursPro");
+if (targetHoursEl) {
+  targetHoursEl.textContent =
+    targetRemaining === 0
+      ? "達成"
+      : avgHourly > 0
+        ? targetHours.toFixed(1) + "時間"
+        : "計算不可";
+}
 }
 
 function exportCSV(){
