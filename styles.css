@@ -104,3 +104,21 @@ main {
   left: 0;
   font-weight: 700;
 }
+#proUpgrade .primary,
+#proUpgrade .ghost {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 14px 16px;
+  border-radius: 14px;
+  margin-top: 12px;
+  font-weight: 700;
+}
+
+#proUpgrade .primary {
+  font-size: 1.05rem;
+}
+
+#proUpgrade .ghost {
+  opacity: .9;
+}
