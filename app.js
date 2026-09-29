@@ -272,6 +272,7 @@ function renderBreakdown() {
 
   makeStats("area", "areaStats");
   makeStats("timeSlot", "timeStats");
+  makeStats("platform", "platformStats");
 }
 
 renderBreakdown();
