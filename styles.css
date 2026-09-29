@@ -706,3 +706,36 @@ body.light .hero-stat strong {
   background: rgba(100, 150, 255, .10);
   box-shadow: 0 0 22px rgba(100, 150, 255, .14);
 }
+.date-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0 16px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.date-card svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--muted);
+  flex: 0 0 auto;
+}
+
+.date-card #dashboardDate {
+  flex: 1;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.date-arrow {
+  color: var(--muted);
+  font-size: 1.2rem;
+}
