@@ -554,3 +554,118 @@ body.light .bottom-nav {
   border-top: 1px solid rgba(0,0,0,.08) !important;
   box-shadow: 0 -6px 20px rgba(0,0,0,.05);
 }
+/* ===== Hero Dashboard Redesign ===== */
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.hero-main {
+  grid-column: 1 / -1;
+  padding: 20px;
+  background:
+    linear-gradient(135deg, rgba(139, 238, 255, .95), rgba(214, 172, 255, .95));
+  color: #101217;
+  border: 0;
+  box-shadow: 0 16px 40px rgba(133, 186, 255, .16);
+}
+
+.hero-main .label,
+.hero-main .sub {
+  color: rgba(16, 18, 23, .72);
+}
+
+.hero-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.hero-main .big {
+  margin-top: 4px;
+  font-size: 2.65rem;
+  line-height: 1;
+  font-weight: 850;
+  letter-spacing: -.05em;
+}
+
+.hero-badge {
+  padding: 7px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.36);
+  border: 1px solid rgba(255,255,255,.5);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+}
+
+.hero-stats {
+  margin-top: 20px;
+  padding-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid rgba(16,18,23,.14);
+}
+
+.hero-stat {
+  padding: 0 10px;
+  text-align: center;
+}
+
+.hero-stat + .hero-stat {
+  border-left: 1px solid rgba(16,18,23,.14);
+}
+
+.hero-stat span {
+  display: block;
+  font-size: .72rem;
+  color: rgba(16,18,23,.64);
+  margin-bottom: 5px;
+}
+
+.hero-stat strong {
+  font-size: 1rem;
+  color: #101217;
+}
+
+.stat-card {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.stat-card .metric {
+  margin-top: 8px;
+  font-size: 1.7rem;
+  font-weight: 850;
+  letter-spacing: -.04em;
+}
+
+.stat-card.accent {
+  grid-column: 1 / -1;
+}
+
+.stat-card.accent .plus {
+  color: #8df36f;
+}
+
+/* Light mode hero */
+body.light .hero-main {
+  background:
+    linear-gradient(135deg, #aeefff, #e1c5ff) !important;
+  color: #101217 !important;
+}
+
+body.light .hero-main .label,
+body.light .hero-main .sub,
+body.light .hero-stat span {
+  color: rgba(16,18,23,.65) !important;
+}
+
+body.light .hero-stat strong {
+  color: #101217 !important;
+}
