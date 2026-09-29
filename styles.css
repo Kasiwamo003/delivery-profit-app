@@ -55,3 +55,21 @@ main {
   letter-spacing: .18em;
   font-size: .75rem;
 }
+.form-grid {
+  gap: 14px;
+}
+
+.form-grid label {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  font-size: .9rem;
+}
+
+.form-grid input,
+.form-grid select {
+  min-height: 48px;
+  font-size: 1rem;
+  padding: 0 14px;
+  border-radius: 14px;
+}
