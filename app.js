@@ -223,7 +223,10 @@ renderMonth();
 
 window.deleteRecord = deleteRecord;
 function renderBreakdown() {
-  const records = getRecords();
+  const records = getRecords().map(r => ({
+  ...r,
+  weekday: ["日","月","火","水","木","金","土"][new Date(r.date + "T00:00:00").getDay()]
+}));
 
   function makeStats(key, boxId) {
     const box = $(boxId);
@@ -273,6 +276,7 @@ function renderBreakdown() {
   makeStats("area", "areaStats");
   makeStats("timeSlot", "timeStats");
   makeStats("platform", "platformStats");
+  makeStats("weekday", "weekdayStats");
 }
 
 renderBreakdown();
