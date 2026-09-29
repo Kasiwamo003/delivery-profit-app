@@ -122,3 +122,20 @@ main {
 #proUpgrade .ghost {
   opacity: .9;
 }
+.legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin: 28px 0 120px;
+  font-size: .85rem;
+}
+
+.legal-links a {
+  text-decoration: none;
+  opacity: .8;
+}
+
+.legal-links a:hover {
+  opacity: 1;
+}
