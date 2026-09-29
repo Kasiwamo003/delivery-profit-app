@@ -225,7 +225,8 @@ window.deleteRecord = deleteRecord;
 function renderBreakdown() {
   const records = getRecords().map(r => ({
   ...r,
-  weekday: ["日","月","火","水","木","金","土"][new Date(r.date + "T00:00:00").getDay()]
+  weekday: ["日","月","火","水","木","金","土"][new Date(r.date + "T00:00:00").getDay()],
+  areaTime: `${r.area || "未設定"} × ${r.timeSlot || "未設定"}`
 }));
 
   function makeStats(key, boxId) {
@@ -277,6 +278,7 @@ function renderBreakdown() {
   makeStats("timeSlot", "timeStats");
   makeStats("platform", "platformStats");
   makeStats("weekday", "weekdayStats");
+  makeStats("areaTime", "areaTimeStats");
 }
 
 renderBreakdown();
