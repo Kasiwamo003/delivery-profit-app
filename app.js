@@ -442,3 +442,20 @@ if (dashboardDate) {
     weekday: "short"
   });
 }
+const dashboardDateInput = $("dashboardDateInput");
+
+if (dashboardDateInput && dashboardDate) {
+  const today = new Date();
+  dashboardDateInput.value = todayKey();
+
+  dashboardDateInput.addEventListener("change", () => {
+    const selected = new Date(dashboardDateInput.value + "T00:00:00");
+
+    dashboardDate.textContent = selected.toLocaleDateString("ja-JP", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+      weekday: "short"
+    });
+  });
+}
