@@ -33,3 +33,6 @@ input:focus,select:focus{border-color:var(--accent)}
 @media(max-width:520px){.form-grid{grid-template-columns:1fr}.hero-grid{grid-template-columns:1fr 1fr}.big{font-size:38px}}
 .pro-only{display:none}
 body.is-pro .pro-only{display:block}
+.stats-grid > div:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
