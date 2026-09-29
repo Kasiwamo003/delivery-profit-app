@@ -84,3 +84,23 @@ main {
 #record .section-title {
   margin-bottom: 12px;
 }
+.pro-feature-list {
+  margin: 16px 0 20px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+
+.pro-feature-list li {
+  position: relative;
+  padding-left: 22px;
+  line-height: 1.5;
+}
+
+.pro-feature-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  font-weight: 700;
+}
