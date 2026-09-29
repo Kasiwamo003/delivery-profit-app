@@ -8,19 +8,23 @@ async function checkProStatus() {
 const authBox = $("authBox");
 const logoutBtn = $("logoutBtn");
 const authStatus = $("authStatus");
-
+const purchaseButtons = $("proPurchaseButtons");
+const proLoginNotice = $("proLoginNotice");
 if (!user) {
   if (authBox) authBox.style.display = "";
   if (logoutBtn) logoutBtn.style.display = "none";
   if (authStatus) authStatus.textContent = "";
 
   applyProStatus(false);
+  if (purchaseButtons) purchaseButtons.style.display = "none";
+if (proLoginNotice) proLoginNotice.style.display = "";
   return;
 }
 
 if (authBox) authBox.style.display = "";
 if (logoutBtn) logoutBtn.style.display = "";
-
+if (purchaseButtons) purchaseButtons.style.display = "";
+if (proLoginNotice) proLoginNotice.style.display = "none";
   const { data } = await supabaseClient
     .from("profiles")
     .select("is_pro")
