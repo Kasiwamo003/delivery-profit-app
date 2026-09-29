@@ -138,7 +138,7 @@ function renderHistory(){
   const records = getRecords();
   const box = $("history");
   if(!records.length){ box.innerHTML = '<div class="muted">まだ記録がありません</div>'; return; }
-  box.innerHTML = records.map(r => `
+  box.innerHTML = (document.body.classList.contains("is-pro") ? records : records.slice(0, 7)).map(r => `
     <div class="history-item">
       <div class="history-main">
         <strong>${r.date} / ${r.platform}</strong>
