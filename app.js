@@ -15,8 +15,6 @@ if (!user) {
   if (authStatus) authStatus.textContent = "";
 
   applyProStatus(false);
-  const upgrade = $("proUpgrade");
-if (upgrade) upgrade.style.display = "none";
   return;
 }
 
