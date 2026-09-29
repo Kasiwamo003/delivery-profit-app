@@ -517,3 +517,35 @@ body.light .bottom-nav {
 body.light .bottom-nav button {
   color: var(--text);
 }
+body.light .card,
+body.light .card.hero,
+body.light .stats-grid > div,
+body.light .quest-box,
+body.light .history-item,
+body.light #authBox,
+body.light #proUpgrade,
+body.light #proActive {
+  background: #ffffff !important;
+  color: #111318 !important;
+  border-color: rgba(0,0,0,.08) !important;
+}
+
+body.light .card strong,
+body.light .card h1,
+body.light .card h2,
+body.light .card h3 {
+  color: #111318;
+}
+
+body.light input,
+body.light select {
+  background: #f7f8fa !important;
+  color: #111318 !important;
+  border-color: rgba(0,0,0,.10) !important;
+}
+
+body.light .muted,
+body.light .sub,
+body.light label {
+  color: #6f7680 !important;
+}
