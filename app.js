@@ -490,7 +490,10 @@ if (dashboardDateInput && dashboardDate) {
       month: "long",
       day: "numeric",
       weekday: "short"
-      renderSelectedDateSummary(dashboardDateInput.value);
+      
     });
-  });
+  
+
+renderSelectedDateSummary(dashboardDateInput.value);
+});
 }
