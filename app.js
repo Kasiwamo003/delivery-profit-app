@@ -165,7 +165,7 @@ function saveToday(){
   const c = calcFromForm();
   const record = {
     id: Date.now(),
-    date: todayKey(),
+    date: $("dashboardDateInput")?.value || todayKey(),
     platform: $("platform").value,
     ...c,
     area: $("area").value,
