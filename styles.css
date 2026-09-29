@@ -73,3 +73,14 @@ main {
   padding: 0 14px;
   border-radius: 14px;
 }
+.card {
+  padding: 20px;
+}
+
+#record {
+  padding: 18px;
+}
+
+#record .section-title {
+  margin-bottom: 12px;
+}
