@@ -136,6 +136,15 @@ const proNoQuest = $("proHourlyNoQuest");
 if (proNoQuest) {
   proNoQuest.textContent = yen(c.hourlyNoQuest) + "/h";
 }
+  const questDependency =
+  c.hourlyWithQuest > 0
+    ? Math.max(0, ((c.hourlyWithQuest - c.hourlyNoQuest) / c.hourlyWithQuest) * 100)
+    : 0;
+
+const questDependencyEl = $("questDependencyPro");
+if (questDependencyEl) {
+  questDependencyEl.textContent = questDependency.toFixed(1) + "%";
+}
   setSettings({targetHourly: val("targetHourly"), monthlyTarget: val("monthlyTarget")});
 }
 
