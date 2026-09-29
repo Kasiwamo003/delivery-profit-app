@@ -139,3 +139,6 @@ main {
 .legal-links a:hover {
   opacity: 1;
 }
+.stats-grid > div:last-child:nth-child(odd) {
+  grid-column: 1 / -1 !important;
+}
