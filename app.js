@@ -430,3 +430,15 @@ document.querySelectorAll(".bottom-nav .nav-item").forEach((btn) => {
     btn.classList.add("active");
   });
 });
+const dashboardDate = $("dashboardDate");
+
+if (dashboardDate) {
+  const now = new Date();
+
+  dashboardDate.textContent = now.toLocaleDateString("ja-JP", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    weekday: "short"
+  });
+}
