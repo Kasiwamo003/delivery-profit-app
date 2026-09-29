@@ -59,7 +59,13 @@ const SETTINGS_KEY = "delivery-profit-settings-v1";
 
 const yen = (n) => "¥" + Math.round(Number(n || 0)).toLocaleString("ja-JP");
 const val = (id) => Number($(id).value || 0);
-const todayKey = () => new Date().toISOString().slice(0,10);
+const todayKey = () => {
+  const d = new Date();
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
 
 function getRecords(){
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]"); } catch { return []; }
