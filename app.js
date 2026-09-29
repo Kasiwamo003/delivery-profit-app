@@ -333,6 +333,29 @@ function renderBreakdown() {
   makeStats("platform", "platformStats");
   makeStats("weekday", "weekdayStats");
   makeStats("areaTime", "areaTimeStats");
+  const rankingBox = $("rankingStats");
+
+if (rankingBox) {
+  const ranking = records
+    .filter(r => Number(r.hours || 0) > 0)
+    .map(r => ({
+      name: `${r.area || "未設定"} × ${r.timeSlot || "未設定"} × ${r.platform || "未設定"}`,
+      hourly: Number(r.profit || 0) / Number(r.hours || 0)
+    }))
+    .sort((a, b) => b.hourly - a.hourly)
+    .slice(0, 5);
+
+  rankingBox.innerHTML = ranking.length
+    ? ranking.map((r, i) => `
+        <div class="history-item">
+          <div class="history-main">
+            <strong>${i + 1}位 ${r.name}</strong>
+            <div class="history-meta">時給 ${yen(r.hourly)}</div>
+          </div>
+        </div>
+      `).join("")
+    : '<p class="muted">まだランキングデータがありません</p>';
+}
 }
 
 renderBreakdown();
