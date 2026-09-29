@@ -36,3 +36,6 @@ body.is-pro .pro-only{display:block}
 .stats-grid > div:last-child:nth-child(odd) {
   grid-column: 1 / -1;
 }
+main {
+  padding-bottom: 110px;
+}
