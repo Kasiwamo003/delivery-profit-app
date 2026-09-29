@@ -37,25 +37,51 @@
 
   <main class="wrap">
     <section class="hero-grid">
-      <div class="card hero">
+  <div class="card hero hero-main">
+    <div class="hero-top">
+      <div>
         <div class="label">今日の利益</div>
         <div class="big" id="todayProfit">¥0</div>
         <div class="sub">経費・クエスト込み</div>
       </div>
-      <div class="card">
-        <div class="label">実質時給</div>
-        <div class="metric" id="hourlyWithQuest">¥0/h</div>
-        <div class="sub">クエスト込み</div>
+      <div class="hero-badge">TODAY</div>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span>配達件数</span>
+        <strong id="deliveryCountMini">0件</strong>
       </div>
-      <div class="card">
-        <div class="label">クエストなし時給</div>
-        <div class="metric" id="hourlyNoQuest">¥0/h</div>
+      <div class="hero-stat">
+        <span>稼働時間</span>
+        <strong id="workHoursMini">0h</strong>
       </div>
-      <div class="card">
-        <div class="label">クエスト効果</div>
-        <div class="metric positive" id="questBoost">+¥0/h</div>
+      <div class="hero-stat">
+        <span>走行距離</span>
+        <strong id="distanceMini">0km</strong>
       </div>
-    </section>
+    </div>
+  </div>
+
+  <div class="card stat-card">
+    <div class="label">実質時給</div>
+    <div class="metric" id="hourlyWithQuest">¥0/h</div>
+    <div class="sub">クエスト込み</div>
+  </div>
+
+  <div class="card stat-card">
+    <div class="label">クエストなし時給</div>
+    <div class="metric" id="hourlyNoQuest">
+    <div class="sub">通常売上ベース</div>
+  </div>
+
+  <div class="card stat-card accent">
+    <div class="label">クエスト効果</div>
+    <div class="metric plus" id="questBoost">
+    <div class="sub">上乗せ時給</div>
+  </div>
+</section>
+      
 
     <section class="card">
       <div class="section-title">
