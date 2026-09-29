@@ -421,3 +421,12 @@ $("logoutBtn").addEventListener("click", async () => {
   await supabaseClient.auth.signOut();
   await checkProStatus();
 });
+document.querySelectorAll(".bottom-nav .nav-item").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".bottom-nav .nav-item").forEach((item) => {
+      item.classList.remove("active");
+    });
+
+    btn.classList.add("active");
+  });
+});
