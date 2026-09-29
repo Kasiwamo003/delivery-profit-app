@@ -18,7 +18,7 @@ if (!user) {
   return;
 }
 
-if (authBox) authBox.style.display = "none";
+if (authBox) authBox.style.display = "";
 if (logoutBtn) logoutBtn.style.display = "";
 
   const { data } = await supabaseClient
