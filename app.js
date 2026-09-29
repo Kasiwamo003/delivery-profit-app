@@ -101,6 +101,9 @@ function calcFromForm(){
 function refreshLive(){
   const c = calcFromForm();
   $("todayProfit").textContent = yen(c.profit);
+  $("deliveryCountMini").textContent = c.deliveries + "件";
+$("workHoursMini").textContent = c.hours + "h";
+$("distanceMini").textContent = c.distance + "km";
   $("hourlyWithQuest").textContent = yen(c.hourlyWithQuest)+"/h";
   $("hourlyNoQuest").textContent = yen(c.hourlyNoQuest)+"/h";
   $("questBoost").textContent = "+"+yen(Math.max(0,c.boost))+"/h";
