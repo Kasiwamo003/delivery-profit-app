@@ -39,3 +39,19 @@ body.is-pro .pro-only{display:block}
 main {
   padding-bottom: 110px;
 }
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(12px);
+}
+
+.topbar h1 {
+  font-size: 1.8rem;
+  line-height: 1.1;
+}
+
+.topbar .eyebrow {
+  letter-spacing: .18em;
+  font-size: .75rem;
+}
