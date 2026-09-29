@@ -442,6 +442,40 @@ if (dashboardDate) {
     weekday: "short"
   });
 }
+function renderSelectedDateSummary(date) {
+  const records = getRecords().filter(r => r.date === date);
+
+  const total = records.reduce((sum, r) => {
+    sum.profit += Number(r.profit || 0);
+    sum.hours += Number(r.hours || 0);
+    sum.deliveries += Number(r.deliveries || 0);
+    sum.distance += Number(r.distance || 0);
+    sum.quest += Number(r.quest || 0);
+    return sum;
+  }, {
+    profit: 0,
+    hours: 0,
+    deliveries: 0,
+    distance: 0,
+    quest: 0
+  });
+
+  const hourlyWithQuest =
+    total.hours > 0 ? total.profit / total.hours : 0;
+
+  const hourlyNoQuest =
+    total.hours > 0 ? (total.profit - total.quest) / total.hours : 0;
+
+  const questBoost = hourlyWithQuest - hourlyNoQuest;
+
+  $("todayProfit").textContent = yen(total.profit);
+  $("deliveryCountMini").textContent = total.deliveries + "件";
+  $("workHoursMini").textContent = total.hours + "h";
+  $("distanceMini").textContent = total.distance + "km";
+  $("hourlyWithQuest").textContent = yen(hourlyWithQuest) + "/h";
+  $("hourlyNoQuest").textContent = yen(hourlyNoQuest) + "/h";
+  $("questBoost").textContent = "+" + yen(Math.max(0, questBoost)) + "/h";
+}
 const dashboardDateInput = $("dashboardDateInput");
 
 if (dashboardDateInput && dashboardDate) {
@@ -456,6 +490,7 @@ if (dashboardDateInput && dashboardDate) {
       month: "long",
       day: "numeric",
       weekday: "short"
+      renderSelectedDateSummary(dashboardDateInput.value);
     });
   });
 }
