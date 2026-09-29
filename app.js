@@ -402,6 +402,11 @@ function applyProStatus(isPro) {
   if (active) {
     active.style.display = isPro ? "" : "none";
   }
+  const proNav = document.querySelector('.bottom-nav button:last-child');
+
+if (proNav) {
+  proNav.dataset.scroll = isPro ? "proActive" : "proUpgrade";
+}
 }
   
 checkProStatus();
