@@ -752,3 +752,18 @@ body.light .hero-stat strong {
   opacity: 0;
   cursor: pointer;
 }
+.hero-stat-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 5px;
+}
+
+.hero-stat-label span {
+  margin: 0;
+}
+
+.hero-stat-label {
+  font-size: .78rem;
+}
