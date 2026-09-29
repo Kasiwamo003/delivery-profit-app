@@ -127,6 +127,15 @@ if (proEta) {
         ? etaQ.toFixed(1) + "時間"
         : "計算不可";
 }
+  const proWithQuest = $("proHourlyWithQuest");
+if (proWithQuest) {
+  proWithQuest.textContent = yen(c.hourlyWithQuest) + "/h";
+}
+
+const proNoQuest = $("proHourlyNoQuest");
+if (proNoQuest) {
+  proNoQuest.textContent = yen(c.hourlyNoQuest) + "/h";
+}
   setSettings({targetHourly: val("targetHourly"), monthlyTarget: val("monthlyTarget")});
 }
 
