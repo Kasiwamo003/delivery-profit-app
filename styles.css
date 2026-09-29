@@ -471,3 +471,49 @@ button:active,
     font-size: 1.4rem;
   }
 }
+body.light {
+  --bg: #f3f5f7;
+  --surface: #ffffff;
+  --surface-2: #f7f8fa;
+  --border: rgba(0,0,0,.08);
+  --text: #111318;
+  --muted: #6f7680;
+  --accent: #7df36f;
+  --accent-strong: #69dd5d;
+  --shadow: 0 10px 28px rgba(0,0,0,.08);
+
+  background:
+    radial-gradient(circle at top left, rgba(125,243,111,.08), transparent 28%),
+    var(--bg);
+  color: var(--text);
+}
+
+body.light .topbar {
+  background: rgba(243,245,247,.86);
+}
+
+body.light .card,
+body.light .stats-grid > div,
+body.light .history-item,
+body.light .form-grid input,
+body.light .form-grid select,
+body.light .pro-feature-list li {
+  color: var(--text);
+}
+
+body.light .primary {
+  color: #111318;
+}
+
+body.light .ghost {
+  color: var(--text);
+}
+
+body.light .bottom-nav {
+  background: rgba(255,255,255,.92);
+  border-top: 1px solid var(--border);
+}
+
+body.light .bottom-nav button {
+  color: var(--text);
+}
