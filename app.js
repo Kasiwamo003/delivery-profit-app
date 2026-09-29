@@ -231,6 +231,27 @@ if (targetHoursEl) {
         ? targetHours.toFixed(1) + "時間"
         : "計算不可";
 }
+  const forecastCurrentEl = $("forecastCurrentPro");
+if (forecastCurrentEl) {
+  forecastCurrentEl.textContent = yen(forecast);
+}
+
+const forecastGap = Math.max(0, monthlyTarget - forecast);
+
+const forecastGapEl = $("forecastGapPro");
+if (forecastGapEl) {
+  forecastGapEl.textContent = yen(forecastGap);
+}
+
+const remainingDays = Math.max(0, daysInMonth - day);
+
+const forecastDailyNeed =
+  remainingDays > 0 ? forecastGap / remainingDays : forecastGap;
+
+const forecastDailyNeedEl = $("forecastDailyNeedPro");
+if (forecastDailyNeedEl) {
+  forecastDailyNeedEl.textContent = yen(forecastDailyNeed);
+}
 }
 
 function exportCSV(){
