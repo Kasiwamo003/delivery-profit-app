@@ -1432,3 +1432,15 @@ body.light .hero-stat strong {
     grid-template-columns:1fr 1fr;
   }
 }
+#saveBtn{
+  width:100%;
+  min-height:58px;
+  margin-top:20px;
+  border:0;
+  border-radius:18px;
+  background:linear-gradient(90deg,#7fe9ff,#d8a6ff);
+  color:#101217;
+  font-size:1rem;
+  font-weight:800;
+  box-shadow:0 12px 26px rgba(133,186,255,.18);
+}
