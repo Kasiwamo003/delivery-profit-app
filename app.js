@@ -433,6 +433,16 @@ document.querySelectorAll(".bottom-nav .nav-item").forEach((btn) => {
     });
 
     btn.classList.add("active");
+
+    const targetId = btn.dataset.scroll;
+    const target = document.getElementById(targetId);
+
+    if (target) {
+      target.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+    }
   });
 });
 const dashboardDate = $("dashboardDate");
