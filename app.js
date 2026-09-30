@@ -32,6 +32,55 @@ if (proLoginNotice) proLoginNotice.style.display = "none";
     .maybeSingle();
 
   applyProStatus(data?.is_pro === true);
+  if (data?.is_pro === true) {
+  await restoreRecordsFromCloud();
+}
+}
+async function restoreRecordsFromCloud() {
+  const { data: { user } } = await supabaseClient.auth.getUser();
+  if (!user) return;
+
+  const { data, error } = await supabaseClient
+    .from("delivery_records")
+    .select("*")
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("クラウド復元失敗", error);
+    return;
+  }
+
+  if (!data || data.length === 0) return;
+
+  const cloudRecords = data.map(r => ({
+    id: Number(r.id),
+    date: r.date,
+    platform: r.platform,
+    sales: Number(r.sales || 0),
+    gross: Number(r.gross || 0),
+    profit: Number(r.profit || 0),
+    hours: Number(r.hours || 0),
+    deliveries: Number(r.deliveries || 0),
+    distance: Number(r.distance || 0),
+    expenses: Number(r.expenses || 0),
+    quest: Number(r.quest || 0),
+    area: r.area || "",
+    timeSlot: r.time_slot || "",
+    questTarget: Number(r.quest_target || 0),
+    questCurrent: Number(r.quest_current || 0)
+  }));
+
+  const localRecords = getRecords();
+  const merged = [...cloudRecords, ...localRecords]
+    .filter((record, index, array) =>
+      index === array.findIndex(r => r.id === record.id)
+    );
+
+  setRecords(merged);
+  renderHistory();
+  renderMonth();
+  renderBreakdown();
 }
 async function sendLoginLink() {
   const email = $("loginEmail").value.trim();
