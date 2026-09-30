@@ -856,3 +856,47 @@ body.light .hero-stat strong {
 .month-summary-card:last-child .month-summary-icon {
   color: #53d6a7 !important;
 }
+/* ===== Analysis Ranking ===== */
+
+#areaStats,
+#timeStats,
+#platformStats {
+  counter-reset: ranking;
+  display: grid;
+  gap: 10px;
+}
+
+#areaStats .history-item,
+#timeStats .history-item,
+#platformStats .history-item {
+  counter-increment: ranking;
+  position: relative;
+  padding: 15px 16px 15px 58px;
+  border-radius: 16px;
+}
+
+#areaStats .history-item::before,
+#timeStats .history-item::before,
+#platformStats .history-item::before {
+  content: counter(ranking);
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  font-weight: 800;
+  font-size: .85rem;
+}
+
+#areaStats .history-item:first-child::before,
+#timeStats .history-item:first-child::before,
+#platformStats .history-item:first-child::before {
+  background: rgba(255, 205, 92, .18);
+  color: #ffd36b;
+}
