@@ -834,3 +834,12 @@ body.light .hero-stat strong {
   font-size: 1.1rem;
   line-height: 1;
 }
+.month-summary-card:first-child .month-summary-icon {
+  background: rgba(80, 140, 255, .14);
+  color: #6fa3ff;
+}
+
+.month-summary-card:last-child .month-summary-icon {
+  background: rgba(69, 214, 163, .14);
+  color: #53d6a7;
+}
