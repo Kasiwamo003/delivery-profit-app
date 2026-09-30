@@ -96,7 +96,29 @@
   </div>
 </section>
       <button type="button" class="record-cta" onclick="document.getElementById('record').scrollIntoView({ behavior: 'smooth' })">＋ 配達を記録する</button>
+<section class="month-summary">
+  <div class="month-summary-head">
+    <h2>今月の合計</h2>
+  </div>
 
+  <div class="month-summary-grid">
+    <div class="month-summary-card">
+      <div class="month-summary-icon">📊</div>
+      <div>
+        <span>売上</span>
+        <strong id="homeMonthSales">¥0</strong>
+      </div>
+    </div>
+
+    <div class="month-summary-card">
+      <div class="month-summary-icon">¥</div>
+      <div>
+        <span>利益</span>
+        <strong id="homeMonthProfit">¥0</strong>
+      </div>
+    </div>
+  </div>
+</section>
     <section class="card" id="record">
       <div class="section-title">
         <h2>今日の記録</h2>
