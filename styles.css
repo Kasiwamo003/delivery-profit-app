@@ -1330,3 +1330,105 @@ body.light .hero-stat strong {
   color:rgba(255,255,255,.72);
   font-size:.76rem;
 }
+/* ===== Record Screen Polish ===== */
+
+#record{
+  padding:22px 18px;
+  border-radius:26px;
+}
+
+#record .section-title{
+  margin-bottom:18px;
+}
+
+#record .section-title h2{
+  font-size:1.35rem;
+  margin:0;
+}
+
+/* 基本入力エリア */
+#record > .form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px 12px;
+}
+
+#record > .form-grid label{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  font-size:.78rem;
+  font-weight:700;
+  color:var(--muted);
+}
+
+#record > .form-grid label:first-child,
+#record > .form-grid label:nth-child(2),
+#record > .form-grid label:nth-child(7),
+#record > .form-grid label:nth-child(8){
+  grid-column:1 / -1;
+}
+
+#record input,
+#record select{
+  width:100%;
+  min-height:52px;
+  box-sizing:border-box;
+  border-radius:16px;
+  padding:0 14px;
+}
+
+/* クエストエリア */
+#record .quest-box{
+  margin-top:20px;
+  padding:18px;
+  border-radius:22px;
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--border);
+}
+
+#record .quest-box .section-title{
+  margin-bottom:14px;
+}
+
+#record .quest-box h3{
+  margin:0;
+  font-size:1rem;
+}
+
+#record .quest-box .form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+/* 目標設定 */
+#record .form-grid.compact{
+  margin-top:18px;
+  padding-top:18px;
+  border-top:1px solid var(--border);
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+/* 保存ボタン */
+#saveBtn{
+  width:100%;
+  min-height:58px;
+  margin-top:20px;
+  border-radius:18px;
+  font-size:1rem;
+  font-weight:800;
+  box-shadow:0 10px 24px rgba(0,0,0,.18);
+}
+
+@media (max-width:420px){
+  #record > .form-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  #record .quest-box .form-grid{
+    grid-template-columns:1fr 1fr;
+  }
+}
