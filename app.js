@@ -289,11 +289,30 @@ function renderHistory(){
     </div>`).join("");
 }
 
-function deleteRecord(id){
-  if(!confirm("この記録を削除しますか？")) return;
+async function deleteRecord(id) {
+  if (!confirm("この記録を削除しますか？")) return;
+
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (user) {
+    const { error } = await supabaseClient
+      .from("delivery_records")
+      .delete()
+      .eq("id", id)
+      .eq("user_id", user.id);
+
+    if (error) {
+      console.error("クラウド削除失敗", error);
+      alert("クラウドから削除できませんでした");
+      return;
+    }
+  }
+
   setRecords(getRecords().filter(r => r.id !== id));
+
   renderHistory();
   renderMonth();
+  renderBreakdown();
 }
 
 function renderMonth(){
