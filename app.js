@@ -160,7 +160,44 @@ if (questDependencyEl) {
 }
   setSettings({targetHourly: val("targetHourly"), monthlyTarget: val("monthlyTarget")});
 }
+async function backupRecordToCloud(record) {
+  const { data: { user } } = await supabaseClient.auth.getUser();
 
+  if (!user) return;
+
+  const { data: profile } = await supabaseClient
+    .from("profiles")
+    .select("is_pro")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  if (profile?.is_pro !== true) return;
+
+  const { error } = await supabaseClient
+    .from("delivery_records")
+    .upsert({
+      id: record.id,
+      user_id: user.id,
+      date: record.date,
+      platform: record.platform,
+      sales: Number(record.sales || 0),
+      gross: Number(record.gross || 0),
+      profit: Number(record.profit || 0),
+      hours: Number(record.hours || 0),
+      deliveries: Number(record.deliveries || 0),
+      distance: Number(record.distance || 0),
+      expenses: Number(record.expenses || 0),
+      quest: Number(record.quest || 0),
+      area: record.area || "",
+      time_slot: record.timeSlot || "",
+      quest_target: Number(record.questTarget || 0),
+      quest_current: Number(record.questCurrent || 0)
+    });
+
+  if (error) {
+    console.error("クラウドバックアップ失敗", error);
+  }
+}
 function saveToday(){
   const c = calcFromForm();
   const record = {
@@ -176,6 +213,7 @@ timeSlot: $("timeSlot").value,
   const records = getRecords();
   records.unshift(record);
   setRecords(records);
+  backupRecordToCloud(record);
   renderHistory();
   renderMonth();
   renderBreakdown();
