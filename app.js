@@ -391,10 +391,29 @@ function exportCSV(){
   URL.revokeObjectURL(a.href);
 }
 
-function clearAll(){
+async function clearAll(){
   if(!confirm("履歴をすべて削除しますか？")) return;
+
+  const { data: { user } } = await supabaseClient.auth.getUser();
+
+  if (user) {
+    const { error } = await supabaseClient
+      .from("delivery_records")
+      .delete()
+      .eq("user_id", user.id);
+
+    if (error) {
+      console.error("クラウド全削除失敗", error);
+      alert("クラウドの履歴を削除できませんでした");
+      return;
+    }
+  }
+
   localStorage.removeItem(STORAGE_KEY);
-  renderHistory(); renderMonth();
+
+  renderHistory();
+  renderMonth();
+  renderBreakdown();
 }
 
 function loadSettings(){
