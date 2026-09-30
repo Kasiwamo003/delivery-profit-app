@@ -355,15 +355,26 @@ function renderBreakdown() {
       const hourly = s.hours > 0 ? s.profit / s.hours : 0;
 
       return `
-        <div class="history-item">
-          <div class="history-main">
-            <strong>${name}</strong>
-            <div class="history-meta">
-              利益 ${yen(s.profit)} ・ 時給 ${yen(hourly)} ・ ${s.deliveries}件
-            </div>
-          </div>
+  <div class="history-item analysis-rank-item">
+    <div class="rank-content">
+
+      <div class="rank-copy">
+        <strong class="rank-name">${name}</strong>
+        <div class="history-meta">
+          ${s.deliveries}件 ・ 時給 ${yen(hourly)}
         </div>
-      `;
+      </div>
+
+      <div class="rank-profit">
+        <span>利益</span>
+        <strong>${yen(s.profit)}</strong>
+      </div>
+
+      <span class="rank-chevron">›</span>
+
+    </div>
+  </div>
+`;
     }).join("");
   }
 
