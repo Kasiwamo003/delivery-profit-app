@@ -843,3 +843,16 @@ body.light .hero-stat strong {
   background: rgba(69, 214, 163, .14);
   color: #53d6a7;
 }
+.month-summary-icon svg {
+  width: 26px;
+  height: 26px;
+  display: block;
+}
+
+.month-summary-card:first-child .month-summary-icon {
+  color: #6fa3ff !important;
+}
+
+.month-summary-card:last-child .month-summary-icon {
+  color: #53d6a7 !important;
+}
