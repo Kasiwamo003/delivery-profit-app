@@ -900,3 +900,116 @@ body.light .hero-stat strong {
   background: rgba(255, 205, 92, .18);
   color: #ffd36b;
 }
+/* ===== Premium Analysis Ranking ===== */
+
+#areaStats::before,
+#timeStats::before,
+#platformStats::before,
+#weekdayStats::before,
+#areaTimeStats::before {
+  display: block;
+  margin: 2px 0 10px;
+  color: var(--muted);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+#areaStats::before {
+  content: "AREA RANKING";
+}
+
+#timeStats::before {
+  content: "TIME RANKING";
+}
+
+#platformStats::before {
+  content: "SERVICE RANKING";
+}
+
+#weekdayStats::before {
+  content: "WEEKDAY RANKING";
+}
+
+#areaTimeStats::before {
+  content: "AREA × TIME RANKING";
+}
+
+.analysis-rank-item {
+  position: relative;
+  padding: 15px 12px 15px 58px !important;
+  overflow: hidden;
+}
+
+.rank-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.rank-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.rank-name {
+  display: block;
+  font-size: .98rem;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rank-copy .history-meta {
+  margin-top: 5px;
+  font-size: .76rem;
+  color: var(--muted);
+}
+
+.rank-profit {
+  flex: 0 0 auto;
+  text-align: right;
+}
+
+.rank-profit span {
+  display: block;
+  margin-bottom: 3px;
+  color: var(--muted);
+  font-size: .64rem;
+}
+
+.rank-profit strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.rank-chevron {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 1.45rem;
+}
+
+#areaStats .analysis-rank-item:first-of-type,
+#timeStats .analysis-rank-item:first-of-type,
+#platformStats .analysis-rank-item:first-of-type,
+#weekdayStats .analysis-rank-item:first-of-type,
+#areaTimeStats .analysis-rank-item:first-of-type {
+  border-color: rgba(255, 205, 92, .22);
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255, 205, 92, .055),
+      transparent 55%
+    ),
+    var(--surface-2);
+}
+
+#areaStats .analysis-rank-item:first-of-type .rank-profit strong,
+#timeStats .analysis-rank-item:first-of-type .rank-profit strong,
+#platformStats .analysis-rank-item:first-of-type .rank-profit strong,
+#weekdayStats .analysis-rank-item:first-of-type .rank-profit strong,
+#areaTimeStats .analysis-rank-item:first-of-type .rank-profit strong {
+  color: #ffd36b;
+}
