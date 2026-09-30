@@ -767,3 +767,15 @@ body.light .hero-stat strong {
 .hero-stat-label {
   font-size: .78rem;
 }
+.record-cta {
+  width: 100%;
+  margin: 4px 0 18px;
+  padding: 16px 18px;
+  border: 0;
+  border-radius: 18px;
+  background: linear-gradient(90deg, #7fe9ff, #d8a6ff);
+  color: #101217;
+  font-size: 1rem;
+  font-weight: 800;
+  box-shadow: 0 12px 30px rgba(133, 186, 255, .18);
+}
