@@ -219,6 +219,11 @@ function renderMonth(){
   const avgHourly = hours ? profit/hours : 0;
   $("monthSales").textContent = yen(sales);
   $("monthProfit").textContent = yen(profit);
+  const homeMonthSales = $("homeMonthSales");
+if (homeMonthSales) homeMonthSales.textContent = yen(sales);
+
+const homeMonthProfit = $("homeMonthProfit");
+if (homeMonthProfit) homeMonthProfit.textContent = yen(profit);
   $("monthHourly").textContent = yen(avgHourly)+"/h";
 
   const day = now.getDate();
