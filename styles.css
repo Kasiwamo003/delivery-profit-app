@@ -1444,3 +1444,9 @@ body.light .hero-stat strong {
   font-weight:800;
   box-shadow:0 12px 26px rgba(133,186,255,.18);
 }
+#loginBtn{
+  background:linear-gradient(90deg,#7fe9ff,#d8a6ff);
+  color:#101217;
+  border:0;
+  box-shadow:0 12px 26px rgba(133,186,255,.18);
+}
