@@ -1326,3 +1326,7 @@ body.light .hero-stat strong {
 .bottom-nav .nav-item[data-scroll="proActive"].active svg{
   filter:drop-shadow(0 0 8px rgba(255,90,230,.7));
 }
+.pro-login-note{
+  color:rgba(255,255,255,.72);
+  font-size:.76rem;
+}
