@@ -586,6 +586,13 @@ if (proNav) {
   
 checkProStatus();
 $("loginBtn").addEventListener("click", sendLoginLink);
+$("proMonthlyBtn")?.addEventListener("click", () => {
+  startProCheckout("monthly");
+});
+
+$("proLifetimeBtn")?.addEventListener("click", () => {
+  startProCheckout("lifetime");
+});
 supabaseClient.auth.onAuthStateChange(() => {
   checkProStatus();
 });
