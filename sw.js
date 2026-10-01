@@ -1,4 +1,4 @@
-const CACHE_NAME = "delivery-profit-v3";
+const CACHE_NAME = "delivery-profit-v4";
 
 const ASSETS = [
   "./",
