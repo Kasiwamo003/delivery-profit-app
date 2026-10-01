@@ -1,4 +1,4 @@
-const CACHE_NAME = "delivery-profit-v7";
+const CACHE_NAME = "delivery-profit-v8";
 
 const ASSETS = [
   "./styles.css?v=16",
