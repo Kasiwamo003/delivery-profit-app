@@ -106,6 +106,37 @@ async function sendLoginLink() {
 
   $("authStatus").textContent = "ログイン用メールを送りました";
 }
+async function startProCheckout(plan) {
+  const { data: { session } } = await supabaseClient.auth.getSession();
+
+  if (!session) {
+    alert("Pro購入にはログインが必要です");
+    return;
+  }
+
+  const { data, error } = await supabaseClient.functions.invoke(
+    "create-checkout",
+    {
+      body: { plan }
+    }
+  );
+
+  if (error) {
+    let message = "決済画面を開けませんでした";
+
+    try {
+      const body = await error.context.json();
+      if (body?.error) message = body.error;
+    } catch {}
+
+    alert(message);
+    return;
+  }
+
+  if (data?.url) {
+    window.location.href = data.url;
+  }
+}
 const $ = (id) => document.getElementById(id);
 const STORAGE_KEY = "delivery-profit-records-v1";
 const SETTINGS_KEY = "delivery-profit-settings-v1";
