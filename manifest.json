@@ -5,5 +5,17 @@
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#111111",
-  "description": "配達員向けの売上・経費・利益・時給・クエスト管理アプリ"
+  "description": "配達員向けの売上・経費・利益・時給・クエスト管理アプリ",
+"icons": [
+  {
+    "src": "icon-192.png",
+    "sizes": "192x192",
+    "type": "image/png"
+  },
+  {
+    "src": "icon-512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }
+]
 }
