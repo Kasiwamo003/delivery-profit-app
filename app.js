@@ -513,6 +513,7 @@ document.querySelectorAll(".bottom-nav button").forEach(btn=>btn.addEventListene
   if(target==="top") window.scrollTo({top:0,behavior:"smooth"});
   if(target==="record") document.querySelectorAll(".card")[1].scrollIntoView({behavior:"smooth"});
   if(target==="history") $("history").scrollIntoView({behavior:"smooth"});
+  if(target==="proUpgrade") $("proUpgrade").scrollIntoView({behavior:"smooth",block:"start"});
 }));
 
 loadSettings();
