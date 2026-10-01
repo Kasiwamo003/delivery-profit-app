@@ -299,7 +299,14 @@ timeSlot: $("timeSlot").value,
   renderBreakdown();
   alert("保存しました");
 }
-
+function escapeHtml(value){
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
 function renderHistory(){
   const records = getRecords();
   const box = $("history");
@@ -307,7 +314,7 @@ function renderHistory(){
   box.innerHTML = (document.body.classList.contains("is-pro") ? records : records.slice(0, 7)).map(r => `
     <div class="history-item">
       <div class="history-main">
-        <strong>${r.date} / ${r.platform}</strong>
+        <strong>${r.date} / ${escapeHtml(r.platform)}</strong>
         <div class="history-meta">${r.deliveries}件・${r.hours}h・${r.distance}km / クエスト ${yen(r.quest)}</div>
       </div>
       <div class="history-profit">
