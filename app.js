@@ -635,7 +635,28 @@ if (proNav) {
 }
 }
   
-checkProStatus();
+async function refreshProAfterPaymentReturn() {
+  const params = new URLSearchParams(window.location.search);
+
+  if (params.get("payment") !== "success") {
+    await checkProStatus();
+    return;
+  }
+
+  await checkProStatus();
+
+  setTimeout(() => {
+    checkProStatus();
+  }, 1500);
+
+  setTimeout(() => {
+    checkProStatus();
+  }, 4000);
+
+  window.history.replaceState({}, "", window.location.pathname);
+}
+
+refreshProAfterPaymentReturn();
 $("loginBtn").addEventListener("click", sendLoginLink);
 $("verifyOtpBtn").addEventListener("click", verifyLoginOtp);
 $("proMonthlyBtn")?.addEventListener("click", () => {
