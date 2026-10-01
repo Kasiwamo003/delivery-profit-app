@@ -1450,3 +1450,9 @@ body.light .hero-stat strong {
   border:0;
   box-shadow:0 12px 26px rgba(133,186,255,.18);
 }
+.seo-intro{
+  color:var(--muted);
+  font-size:.9rem;
+  line-height:1.7;
+  margin:4px 0 16px;
+}
