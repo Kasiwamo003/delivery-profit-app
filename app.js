@@ -348,7 +348,7 @@ async function deleteRecord(id) {
 
 function renderMonth(){
   const now = new Date();
-  const ym = now.toISOString().slice(0,7);
+  const ym = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}`;
   const records = getRecords().filter(r => r.date.startsWith(ym));
   const sales = records.reduce((a,r)=>a+r.gross,0);
   const profit = records.reduce((a,r)=>a+r.profit,0);
