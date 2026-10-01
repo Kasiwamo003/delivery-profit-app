@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://deliverynavi.github.io/delivery-profit-app/sitemap.xml
