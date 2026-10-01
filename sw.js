@@ -1,8 +1,8 @@
-const CACHE_NAME = "delivery-profit-v6";
+const CACHE_NAME = "delivery-profit-v7";
 
 const ASSETS = [
   "./styles.css?v=16",
-  "./app.js?v=32",
+　"./app.js?v=33",
   "./config.js",
   "./manifest.json"
 ];
