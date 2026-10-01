@@ -20,7 +20,19 @@
   />
 
   <button id="loginBtn" class="primary">
-    ログインリンクを送る
+    6桁コードをメールで送る
+  </button>
+
+  <input
+    id="loginOtp"
+    type="text"
+    inputmode="numeric"
+    maxlength="6"
+    placeholder="メールに届いた6桁コード"
+  />
+
+  <button id="verifyOtpBtn" class="ghost">
+    コードでログイン
   </button>
 
   <button id="logoutBtn" class="ghost" style="display:none">
