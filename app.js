@@ -90,21 +90,64 @@ async function sendLoginLink() {
     return;
   }
 
-  $("authStatus").textContent = "送信中...";
+  $("authStatus").textContent = "6桁コードを送信中...";
 
   const { error } = await supabaseClient.auth.signInWithOtp({
     email,
     options: {
-      emailRedirectTo: "https://kasiwamo003.github.io/delivery-profit-app/"
+      shouldCreateUser: true
     }
   });
 
   if (error) {
-    $("authStatus").textContent = error.message;
+    console.error(error);
+    $("authStatus").textContent =
+      "コードを送信できませんでした: " + error.message;
     return;
   }
 
-  $("authStatus").textContent = "ログイン用メールを送りました";
+  $("authStatus").textContent =
+    "メールに届いた6桁コードを入力してください";
+}
+
+async function verifyLoginOtp() {
+  const email = $("loginEmail").value.trim();
+  const token = $("loginOtp").value.trim();
+
+  if (!email) {
+    $("authStatus").textContent = "メールアドレスを入力してください";
+    return;
+  }
+
+  if (!token || token.length !== 6) {
+    $("authStatus").textContent = "6桁コードを入力してください";
+    return;
+  }
+
+  $("authStatus").textContent = "ログイン中...";
+
+  const { data, error } = await supabaseClient.auth.verifyOtp({
+    email,
+    token,
+    type: "email"
+  });
+
+  if (error) {
+    console.error(error);
+    $("authStatus").textContent =
+      "コードが正しくないか期限切れです";
+    return;
+  }
+
+  if (!data?.session) {
+    $("authStatus").textContent = "ログインできませんでした";
+    return;
+  }
+
+  $("authStatus").textContent = "ログインしました";
+  $("loginOtp").value = "";
+
+  await checkProStatus();
 }
 async function startProCheckout(plan) {
   const { data: { session } } = await supabaseClient.auth.getSession();
@@ -593,6 +636,7 @@ if (proNav) {
   
 checkProStatus();
 $("loginBtn").addEventListener("click", sendLoginLink);
+$("verifyOtpBtn").addEventListener("click", verifyLoginOtp);
 $("proMonthlyBtn")?.addEventListener("click", () => {
   startProCheckout("monthly");
 });
