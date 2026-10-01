@@ -492,7 +492,7 @@ function renderBreakdown() {
     const groups = {};
 
     records.forEach(r => {
-      const name = r[key] || "未設定";
+      const name = escapeHtml(r[key] || "未設定");
 
       if (!groups[name]) {
         groups[name] = {
