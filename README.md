@@ -1,1 +1,1 @@
-# delivery-profit-app
+# マネミエ
